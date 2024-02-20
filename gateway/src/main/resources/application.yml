@@ -13,7 +13,6 @@ spring:
     name: apigateway-service
   cloud:
     gateway:
-      mvc:
         routes:
           - id: user-service
             uri: lb://USER-SERVICE
