@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8081
 
 eureka:
   client:
@@ -15,7 +15,16 @@ spring:
     gateway:
       mvc:
         routes:
-          - id: user-service
+          - id: USER-SERVICE
             uri: lb://USER-SERVICE
             predicates:
-              - Path=/user-service/**
+              - Path=/user-service/login
+            filters:
+              - name: OauthFilter
+          - id: USER-SERVICE
+            uri: lb://USER-SERVICE
+            predicates:
+              - Path=/user-service/test
+            filters:
+              - name: OauthFilter2
+
